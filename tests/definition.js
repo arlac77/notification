@@ -26,3 +26,16 @@ vows.describe('Notification Definition').addBatch({
         }
     }
 }).export(module);
+
+vows.describe('Notification Incarnation').addBatch({
+    'Incarnation Attributes': {
+        topic:  new notification.incarnation("de.mfelten.test.1",{ "key1" : "value1", "key2" : "value2"}),
+        'id is present': function (topic) {
+            assert.equal (topic.id, "de.mfelten.test.1");
+        },
+        'properties are present': function (topic) {
+            assert.equal (topic.properties.key1, "value1");
+            assert.equal (topic.properties.key2, "value2");
+        }
+    }
+}).export(module);

@@ -15,7 +15,7 @@
 
  "main": "lib/notification.js",
 
- "scripts": { "test" : "node tests/simple.js" },
+ "scripts": { "test" : "node tests/definition.js" },
 
  "repository" : {
   "type" : "git",
