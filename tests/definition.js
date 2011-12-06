@@ -4,7 +4,7 @@ var vows = require('vows'),
 
 vows.describe('Notification Definition').addBatch({
     'Definition Attributes': {
-        topic:  new notification.definition(
+        topic:  new notification.Definition(
             { "id" : "de.mfelten.test.1",
               "severity" : notification.severity.SUCCESS,
               "action" : notification.action.IGNORE,
@@ -23,13 +23,42 @@ vows.describe('Notification Definition').addBatch({
         },
         'title is present': function (topic) {
             assert.equal (topic.title, "a simple notification");
+        },
+        'description is present': function (topic) {
+            assert.equal (topic.description, "some more text");
+        },
+        'hint is present': function (topic) {
+            assert.equal (topic.hint, "ignore anything here");
         }
-    }
+    },
+    'Definition Default Attributes': {
+        topic:  new notification.Definition(
+            { "id" : "de.mfelten.test.2" }),
+
+        'id is present': function (topic) {
+            assert.equal (topic.id, "de.mfelten.test.2");
+        },
+        'severity is present': function (topic) {
+            assert.equal (topic.severity, notification.severity.ERROR);
+        },
+        'action is present': function (topic) {
+            assert.equal (topic.action, notification.action.ALERT);
+        },
+        'title is undefined': function (topic) {
+            assert.isUndefined(topic.title);
+        },
+        'description is undefined': function (topic) {
+            assert.isUndefined(topic.description);
+        },
+        'hint is undefined': function (topic) {
+            assert.isUndefined(topic.hint);
+        }
+    },
 }).export(module);
 
 vows.describe('Notification Incarnation').addBatch({
     'Incarnation Attributes': {
-        topic:  new notification.incarnation("de.mfelten.test.1",{ "key1" : "value1", "key2" : "value2"}),
+        topic:  new notification.Incarnation("de.mfelten.test.1",{ "key1" : "value1", "key2" : "value2"}),
         'id is present': function (topic) {
             assert.equal (topic.id, "de.mfelten.test.1");
         },
