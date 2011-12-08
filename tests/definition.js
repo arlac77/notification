@@ -62,6 +62,10 @@ vows.describe('Notification Incarnation').addBatch({
         'id is present': function (topic) {
             assert.equal (topic.id, "de.mfelten.test.1");
         },
+        'date <=> now': function (topic) {
+            var now = new Date();
+            assert.ok(topic.date.getTime() <= now.getTime() && (topic.date.getTime() + 1000 ) >= now.getTime());
+        },
         'properties are present': function (topic) {
             assert.equal (topic.properties.key1, "value1");
             assert.equal (topic.properties.key2, "value2");
