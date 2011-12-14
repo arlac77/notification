@@ -72,3 +72,24 @@ vows.describe('Notification Incarnation').addBatch({
         }
     }
 }).export(module);
+
+vows.describe('Notification Manager').addBatch({
+    'Incarnation Attributes': {
+        topic:  function() { var manager = new notification.Manager(); return manager; },
+        'handle notification': function (topic) {
+			var handeled = 0;
+			
+			topic.on('handle', function(incarnation) {
+				console.log("handle: " + incarnation);
+				
+	            assert.equal (incarnation.id, "de.mfelten.test.2");
+				handeled = 1;
+			});
+
+			var incarnation = new notification.Incarnation("de.mfelten.test.1",{ "key1" : "value1", "key2" : "value2"});
+			topic.handle(incarnation);
+			
+           // assert.equal (handeled, 1);
+        }
+    }
+}).export(module);
