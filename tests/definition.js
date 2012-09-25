@@ -4,7 +4,7 @@ var vows = require('vows'),
 
 vows.describe('Notification Definition').addBatch({
     'Definition Attributes': {
-        topic:  new notification.Definition(
+        topic: notification.Definition(
             { "id" : "de.mfelten.test.1",
               "severity" : notification.severity.SUCCESS,
               "action" : notification.action.IGNORE,
@@ -32,7 +32,7 @@ vows.describe('Notification Definition').addBatch({
         }
     },
     'Definition Default Attributes': {
-        topic:  new notification.Definition(
+        topic: notification.Definition(
             { "id" : "de.mfelten.test.2" }),
 
         'id is present': function (topic) {
