@@ -1,6 +1,8 @@
 notification(1) -- javascript api for processing notifications
 ==============================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/arlac77/notification.svg)](https://greenkeeper.io/)
+
 ## SYNOPSIS
 
 This is just enough info to get you up and running.
